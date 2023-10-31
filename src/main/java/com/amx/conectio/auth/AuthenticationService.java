@@ -40,7 +40,7 @@ public class AuthenticationService {
 
 	}
 
-	public AuthenticationResponse authenticate(AuthenticateRequest request) {
+	public AuthenticationResponse authenticate(AuthenticationRequest request) {
 		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 

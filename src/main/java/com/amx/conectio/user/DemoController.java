@@ -1,4 +1,4 @@
-package com.amx.conectio.auth;
+package com.amx.conectio.user;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

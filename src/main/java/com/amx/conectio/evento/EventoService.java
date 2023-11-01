@@ -1,13 +1,12 @@
 package com.amx.conectio.evento;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,8 +15,8 @@ public class EventoService {
 
     private EventoRepository eventoRepository;
 
-    public List<Evento> getAllEventos() {
-        return eventoRepository.findAll();
+    public Page<Evento> getAllEventos(Pageable pageable) {
+        return eventoRepository.findAll(pageable);
     }
 
     public Optional<Evento> getEventoById(Long id) {
@@ -41,4 +40,5 @@ public class EventoService {
         eventoRepository.deleteById(id);
     }
 }
+
 

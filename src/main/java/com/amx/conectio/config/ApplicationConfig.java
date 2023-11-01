@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.amx.conectio.user.UserRepository;
+import com.amx.conectio.usuario.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

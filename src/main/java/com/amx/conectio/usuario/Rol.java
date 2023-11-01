@@ -1,4 +1,4 @@
-package com.amx.conectio.user;
+package com.amx.conectio.usuario;
 
 public enum Rol {
 	USER, ADMIN

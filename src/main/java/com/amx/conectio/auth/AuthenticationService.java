@@ -6,9 +6,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.amx.conectio.config.JwtService;
-import com.amx.conectio.user.Rol;
-import com.amx.conectio.user.UserRepository;
-import com.amx.conectio.user.Usuario;
+import com.amx.conectio.usuario.Rol;
+import com.amx.conectio.usuario.UserRepository;
+import com.amx.conectio.usuario.Usuario;
 
 import lombok.RequiredArgsConstructor;
 

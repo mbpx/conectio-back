@@ -7,12 +7,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.amx.conectio.evento.Evento;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,6 +44,10 @@ public class Usuario implements UserDetails {
 	
 	@Enumerated(EnumType.STRING)
 	private Rol rol;
+	
+	@ManyToOne
+	private List<Evento> eventosCreados;
+	private List<Evento> eventosSuscritos;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,21 +1,22 @@
 package com.amx.conectio.evento;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
+import com.amx.conectio.usuario.UserRepository;
 
-import java.util.List;
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class EventoService {
 
-    private EventoRepository eventoRepository;
-
+    private final EventoRepository eventoRepository;
+    private final UserRepository userRepository;
+    
     public Page<Evento> getAllEventos(Pageable pageable) {
         return eventoRepository.findAll(pageable);
     }

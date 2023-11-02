@@ -7,8 +7,14 @@ import org.springframework.lang.NonNull;
 import com.amx.conectio.imagen.Imagen;
 import com.amx.conectio.usuario.Usuario;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -25,20 +31,25 @@ public class Evento {
 
 	@Id
 	private Long id;
-	
+
 	@NonNull
 	private String titulo;
-	
+
 	@NonNull
 	private String descripcion;
-	
+
+	@OneToOne(cascade = CascadeType.ALL, optional = true)
+    @JoinColumn(name = "imagen_id", referencedColumnName = "id")
 	private Imagen imagen;
-	
-	private double[] coordenadas;
-	
-	@OneToOne
+	private double latitud;
+	private double longitud;
+
+	@ManyToOne()
+	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
-	
-	@OneToMany
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "usuario_evento", joinColumns = { @JoinColumn(name = "evento_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "usuario_id") })
 	private List<Usuario> usuariosSuscritos;
 }

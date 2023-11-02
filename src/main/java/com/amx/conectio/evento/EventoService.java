@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,10 @@ public class EventoService {
 
     public void deleteEvento(Long id) {
         eventoRepository.deleteById(id);
+    }
+    
+    public Page<Evento> findNearbyEventosOrderByDistance(double latitude, double longitude, double maxDistance, Pageable pageable) {
+        return eventoRepository.findNearbyEventosOrderByDistance(latitude, longitude, maxDistance, pageable);
     }
 }
 

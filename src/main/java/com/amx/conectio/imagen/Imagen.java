@@ -1,12 +1,15 @@
 package com.amx.conectio.imagen;
 
 
+import com.amx.conectio.evento.Evento;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,4 +35,7 @@ public class Imagen {
     @Lob
     @Column(name = "imagedata", length = 65555)
     private byte[] imageData;
+    
+    @OneToOne(mappedBy = "imagen", optional = true)
+    private Evento evento;
 }

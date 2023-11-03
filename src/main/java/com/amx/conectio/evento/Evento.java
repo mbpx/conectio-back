@@ -6,9 +6,7 @@ import org.springframework.lang.NonNull;
 
 import com.amx.conectio.imagen.Imagen;
 import com.amx.conectio.usuario.Usuario;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -30,7 +28,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Evento {
 
 	@Id
@@ -46,12 +43,13 @@ public class Evento {
 	@OneToOne(cascade = CascadeType.ALL, optional = true)
 	@JoinColumn(name = "imagen_id", referencedColumnName = "id")
 	private Imagen imagen;
+	
 	private double latitud;
 	private double longitud;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
-	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId = true)
 	private Usuario usuario;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })

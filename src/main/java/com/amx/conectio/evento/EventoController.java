@@ -25,12 +25,11 @@ public class EventoController {
 
 	private final EventoService eventoService;
 	
-	@GetMapping
 	public ResponseEntity<String> sayHello() {
 		return ResponseEntity.ok("hello eventos world");
 	}
 
-	
+	@GetMapping
 	public ResponseEntity<Page<Evento>> getAllEventos(@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "10") int size) {
 		Page<Evento> resultado = eventoService.getAllEventos(PageRequest.of(page, size));

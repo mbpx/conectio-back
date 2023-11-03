@@ -17,9 +17,9 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
 	@Query(value = "SELECT e FROM Evento e "
 			+ "WHERE FUNCTION('earth_distance', FUNCTION('ll_to_earth', e.latitud, e.longitud), FUNCTION('ll_to_earth', :latitud, :longitud)) < :maxDistancia "
 			+ "ORDER BY FUNCTION('earth_distance', FUNCTION('ll_to_earth', e.latitud, e.longitud), FUNCTION('ll_to_earth', :latitud, :longitud)) ASC")
-	Page<Evento> findNearbyEventosOrderByDistance(@Param("latitud") double latitud,
-			@Param("longitud") double longitud, @Param("maxDistancia") double maxDistancia, Pageable pageable);
-	
+	Page<Evento> findNearbyEventosOrderByDistance(@Param("latitud") double latitud, @Param("longitud") double longitud,
+			@Param("maxDistancia") double maxDistancia, Pageable pageable);
+
 //	@Query(value = "SELECT e FROM Evento e WHERE " +
 //            "(6371 * acos(cos(radians(:latitud)) * cos(radians(e.latitud)) * cos(radians(e.longitud) - radians(:longitud)) + sin(radians(:latitud)) * sin(radians(e.latitud)))) < :maxDistancia " +
 //            "ORDER BY (6371 * acos(cos(radians(:latitud)) * cos(radians(e.latitud)) * cos(radians(e.longitud) - radians(:longitud)) + sin(radians(:latitud)) * sin(radians(e.latitud)))) ASC")

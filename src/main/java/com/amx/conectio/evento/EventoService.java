@@ -6,8 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.amx.conectio.usuario.UserRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -15,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 public class EventoService {
 
     private final EventoRepository eventoRepository;
-    private final UserRepository userRepository;
     
     public Page<Evento> getAllEventos(Pageable pageable) {
         return eventoRepository.findAll(pageable);

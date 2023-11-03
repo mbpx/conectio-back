@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.amx.conectio.evento.Evento;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -55,7 +54,6 @@ public class Usuario implements UserDetails {
 	private Rol rol;
 
 	@OneToMany(mappedBy = "usuario")
-	@JsonManagedReference
 	private List<Evento> eventosCreados;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
